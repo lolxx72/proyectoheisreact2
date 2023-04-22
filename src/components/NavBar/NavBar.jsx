@@ -1,13 +1,14 @@
 import CartWidget from "../CartWidget/cartwidget"
 import Categorias from "./Categorías/categorias"
+import { Link } from "react-router-dom"
 
 const NavBar = () => {
     return(
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
   <div className="container-fluid">
-    <a className="navbar-brand" href="#">
-      PetFunes
-    </a>
+  <Link className="nav-link" to={"/"}>
+        <button className="navbar-brand btn btn-primary">PetFunes</button>
+      </Link>
     <button
       className="navbar-toggler"
       type="button"

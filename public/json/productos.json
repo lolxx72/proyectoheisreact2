@@ -5,7 +5,7 @@
     "marca": "Purina Excelent",
     "precio": 1,
     "stock": 10,
-    "img": "img/excelentperrroadulto.jpg"
+    "img": "/img/excelentperrroadulto.jpg"
 },
 {
     "id":2,
@@ -14,7 +14,7 @@
     "marca": "Purina Excelent",
     "precio": 1,
     "stock": 10,
-    "img": "img/excelentgatoadulto.jpg"
+    "img": "/img/excelentgatoadulto.jpg"
 },
 {
     "id":3,
@@ -23,7 +23,7 @@
     "marca": "Purina ProPlan",
     "precio": 1,
     "stock": 10,
-    "img": "img/proplanperroadulto.jpg"
+    "img": "/img/proplanperroadulto.jpg"
 },
 {
     "id":4,
@@ -32,7 +32,7 @@
     "marca": "Royal Canin",
     "precio": 1,
     "stock": 10,
-    "img": "img/fit32.jpg"
+    "img": "/img/fit32.jpg"
 },
 {
     "id":5,
@@ -41,7 +41,7 @@
     "marca": "Vital Can",
     "precio": 1,
     "stock": 10,
-    "img": "img/balancedperroadulto.jpg"
+    "img": "/img/balancedperroadulto.jpg"
 },
 {
     "id":6,
@@ -50,7 +50,7 @@
     "marca": "Old Prince",
     "precio": 1,
     "stock": 10,
-    "img": "img/opgatoadulto.jpg"
+    "img": "/img/opgatoadulto.jpg"
 },
 {
     "id":7,
@@ -59,7 +59,7 @@
     "marca": "Old Prince",
     "precio": 1,
     "stock": 10,
-    "img": "img/opcorderoperroadulto.jpg"
+    "img": "/img/opcorderoperroadulto.jpg"
 },
 {
     "id":8,
@@ -68,7 +68,7 @@
     "marca": "Vital Can",
     "precio": 1,
     "stock": 10,
-    "img": "img/completegatoadulto.jpg"
+    "img": "/img/completegatoadulto.jpg"
 },
 {
     "id":9,
@@ -77,7 +77,7 @@
     "marca": "Royal Canin",
     "precio": 1,
     "stock": 10,
-    "img": "img/royalminiadult.jpg"
+    "img": "/img/royalminiadult.jpg"
 },
 {
     "id":10,
@@ -86,5 +86,5 @@
     "marca": "Old Prince",
     "precio": 1,
     "stock": 10,
-    "img": "img/gatoscastradosop.jpg"
+    "img": "/img/gatoscastradosop.jpg"
 }]
