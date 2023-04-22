@@ -10,6 +10,7 @@ const Item = ({item}) => {
     <p className="card-text">Marca: {item.marca}</p>
     <p className="card-text">Precio: ${item.precio}</p>
     <p className="card-text">Disponibles: {item.stock}</p>
+    <button className='btn btn-primary'>Ver producto</button>
   </div>
 </div>
 
