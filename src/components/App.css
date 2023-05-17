@@ -2,3 +2,24 @@
     max-width: 1000px;
     margin-top: 10px;
 }
+
+.cardBody {
+    background-color: rgb(211, 194, 176);
+    margin-bottom: 3px;
+    text-align: center;
+}
+
+.cardBodyDark {
+    background-color: rgb(211, 194, 176);
+    margin-bottom: 3px;
+    text-align: center;
+}
+
+.divForm {
+    margin-top: 20px;
+}
+
+.darkMode {
+    background-color: black;
+    color: burlywood;
+}

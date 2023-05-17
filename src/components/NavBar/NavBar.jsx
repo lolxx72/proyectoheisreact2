@@ -1,6 +1,7 @@
 import CartWidget from "../CartWidget/cartwidget"
 import Categorias from "./Categorías/categorias"
 import { Link } from "react-router-dom"
+import BotonDarkMode from "./BotonDark/botonDark"
 
 const NavBar = () => {
     return(
@@ -23,6 +24,7 @@ const NavBar = () => {
     <Categorias/>
     
     <CartWidget cantCarrito={0} />
+    <BotonDarkMode />
   </div>
 </nav>
 

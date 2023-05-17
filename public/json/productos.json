@@ -1,6 +1,6 @@
 [{
     "id":1,
-    "idCategoria":1,
+    "idCategoria":"paraPerros",
     "nombre": "Excelent Perro Adulto",
     "marca": "Purina Excelent",
     "precio": 1,
