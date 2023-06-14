@@ -1,9 +1,12 @@
 import React from 'react';
 import { useRef } from 'react';
+import { useCartContext } from '../../context/CartContext';
+import { Link } from 'react-router-dom';
 
 const Checkout = () => {
 
     const datForm = useRef()
+    const {Cart, totalPrice, emptyCart} = useCartContext()
 
     const consultoForm = (e) => {
 
@@ -15,6 +18,14 @@ const Checkout = () => {
 
     }
     return (
+        <>
+        {
+            Cart.length === 0 ?
+            <>
+            <h2>Para realizar la compra debe tener al menos un producto en el carrito!</h2>
+            <Link className="nav-link" to={"/"}><button className='btn btn-primary'>Continuar comprando</button></Link>
+            </>
+            :
         <div className='container divForm'>
             <form onSubmit={consultoForm} ref={datForm}>
                 <div className='mb-3'>
@@ -45,6 +56,8 @@ const Checkout = () => {
             </form>
             
         </div>
+    }
+    </>
     );
 }
 

@@ -9,17 +9,30 @@
     text-align: center;
 }
 
-.cardBodyDark {
-    background-color: rgb(211, 194, 176);
-    margin-bottom: 3px;
-    text-align: center;
-}
 
 .divForm {
     margin-top: 20px;
 }
 
-.darkMode {
-    background-color: black;
-    color: burlywood;
+.btn {
+    background: rgb(255,255,255);
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(253,92,29,1) 12%, rgba(252,176,69,1) 61%);
+}
+
+.carrito {
+    color: #ffffff;
+}
+
+.cardCart {
+    max-width: 400px;
+}
+
+.cantCarrito {
+    position: relative;
+    left: 10%;
+}
+
+.cartContainer {
+    margin-top: 5%;
+    margin-left: 15%;
 }

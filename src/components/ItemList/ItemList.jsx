@@ -1,14 +1,20 @@
-import React from 'react';
-import Item from '../Item/Item';
+import Item from "../Item/Item"
+import ItemCart from "../ItemCart/ItemCart"
 
-const ItemList = ({productos}) => {
-    console.log(productos)
+const ItemList = ({ productos, plantilla }) => {
     return (
         <>
-            {productos.map(producto => <Item key={producto.id} item={producto}/>)}
+            {
+                plantilla === "Item"
+                    ?
+                    productos.map(producto => <Item key={producto.id} item={producto} />)
+                    :
+                    productos.map(producto => <ItemCart key={producto.id} item={producto} />)
+            }
+
         </>
-    );
+    )
 }
 
-export default ItemList;
+export default ItemList
 

@@ -3,88 +3,88 @@
     "idCategoria":"paraPerros",
     "nombre": "Excelent Perro Adulto",
     "marca": "Purina Excelent",
-    "precio": 1,
+    "precio": 12680,
     "stock": 10,
     "img": "/img/excelentperrroadulto.jpg"
 },
 {
     "id":2,
-    "idCategoria":2,
+    "idCategoria": "paraGatos",
     "nombre": "Excelent Gato Adulto",
     "marca": "Purina Excelent",
-    "precio": 1,
+    "precio": 21890,
     "stock": 10,
     "img": "/img/excelentgatoadulto.jpg"
 },
 {
     "id":3,
-    "idCategoria":1,
+    "idCategoria":"paraPerros",
     "nombre": "ProPlan Perro Adulto",
     "marca": "Purina ProPlan",
-    "precio": 1,
+    "precio": 19090,
     "stock": 10,
     "img": "/img/proplanperroadulto.jpg"
 },
 {
     "id":4,
-    "idCategoria":2,
+    "idCategoria":"paraGatos",
     "nombre": "Fit 32 Gato adulto",
     "marca": "Royal Canin",
-    "precio": 1,
+    "precio": 32540,
     "stock": 10,
     "img": "/img/fit32.jpg"
 },
 {
     "id":5,
-    "idCategoria":1,
+    "idCategoria":"paraPerros",
     "nombre": "Balanced Perro Adulto ",
     "marca": "Vital Can",
-    "precio": 1,
+    "precio": 13680,
     "stock": 10,
     "img": "/img/balancedperroadulto.jpg"
 },
 {
     "id":6,
-    "idCategoria":2,
+    "idCategoria":"paraGatos",
     "nombre": "Old Prince Cordero Gato adulto",
     "marca": "Old Prince",
-    "precio": 1,
+    "precio": 2140,
     "stock": 10,
     "img": "/img/opgatoadulto.jpg"
 },
 {
     "id":7,
-    "idCategoria":1,
+    "idCategoria":"paraPerros",
     "nombre": "Old Prince Cordero Perro adulto",
     "marca": "Old Prince",
-    "precio": 1,
+    "precio": 14440,
     "stock": 10,
     "img": "/img/opcorderoperroadulto.jpg"
 },
 {
     "id":8,
-    "idCategoria":2,
+    "idCategoria":"paraGatos",
     "nombre": "Complete Gato adulto",
     "marca": "Vital Can",
-    "precio": 1,
+    "precio": 12000,
     "stock": 10,
     "img": "/img/completegatoadulto.jpg"
 },
 {
     "id":9,
-    "idCategoria":1,
+    "idCategoria":"paraPerros",
     "nombre": "Royal Canin Mini Adult  (Perro)",
     "marca": "Royal Canin",
-    "precio": 1,
+    "precio": 2320,
     "stock": 10,
     "img": "/img/royalminiadult.jpg"
 },
 {
     "id":10,
-    "idCategoria":2,
+    "idCategoria":"paraGatos",
     "nombre": "Old Prince Cordero Gatos esterilizados",
     "marca": "Old Prince",
-    "precio": 1,
+    "precio": 1680,
     "stock": 10,
     "img": "/img/gatoscastradosop.jpg"
 }]

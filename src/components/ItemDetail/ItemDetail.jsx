@@ -1,10 +1,12 @@
 import React from 'react';
 import ItemCount from '../ItemCount/ItemCount';
+import { useCartContext } from '../../context/CartContext';
 
 const ItemDetail = ({item}) => {
-    const onAdd = (contador) => {//Agregar al carrito
-        console.log(contador)
-        console.log(item)
+    const {addItem} = useCartContext()
+
+    const onAdd = (contador) => {
+        addItem(item, contador)
     }
     return (
         <div className='row g-0'>

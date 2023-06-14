@@ -2,12 +2,10 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ItemList from '../ItemList/ItemList';
-import { useDarkModeContext } from '../../context/DarkModeContext';
+
 const ItemListContainer = ({greeting}) => {
   const [productos, setProductos] = useState([])
   const {category} = useParams()
-  const {darkMode} = useDarkModeContext()
-  console.log(darkMode)
 
   useEffect(()=>{
 
@@ -34,7 +32,7 @@ const ItemListContainer = ({greeting}) => {
   return (
     <div className='row'>
       <h1 className='greeting'>{greeting}</h1>
-      {productos}
+      {<ItemList productos={productos} plantilla={"Item"}/>}
     </div>
   );
 }

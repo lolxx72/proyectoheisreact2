@@ -1,14 +1,13 @@
 import CartWidget from "../CartWidget/cartwidget"
 import Categorias from "./Categorías/categorias"
 import { Link } from "react-router-dom"
-import BotonDarkMode from "./BotonDark/botonDark"
 
 const NavBar = () => {
     return(
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
   <div className="container-fluid">
   <Link className="nav-link" to={"/"}>
-        <button className="navbar-brand btn btn-primary">PetFunes</button>
+        <button className="navbar-brand btn">PetFunes</button>
       </Link>
     <button
       className="navbar-toggler"
@@ -24,7 +23,6 @@ const NavBar = () => {
     <Categorias/>
     
     <CartWidget cantCarrito={0} />
-    <BotonDarkMode />
   </div>
 </nav>
 
