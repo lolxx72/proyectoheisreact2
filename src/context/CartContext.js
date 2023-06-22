@@ -1,63 +1,55 @@
 import { useState, createContext, useContext } from "react";
 
-const CartContext = createContext() 
+const CarritoContext = createContext() 
 
-export const useCartContext = () => useContext(CartContext)
+export const useCarritoContext = () => useContext(CarritoContext)
 
-const CartProvider = (props) => {
+export const CarritoProvider = (props) => {
 
-    const [cart, setCart] = useState([])
+    const [carrito, setCarrito] = useState([])
 
     const isInCart = (id) => {
-        return cart.some(prod => prod.id === id)
+        return carrito.some(prod => prod.id === id) //V o F
     }
 
     const addItem = (item, quantity) => {
         if (isInCart(item.id)) {
-
-            const indice = cart.findIndex(prod => prod.id === item.id)
-            const aux = [...cart]
+            const indice = carrito.findIndex(prod => prod.id === item.id)
+            const aux = [...carrito]
             aux[indice].quantity = quantity
-            setCart(aux)
-
+            setCarrito(aux)
         } else {
-
             const newItem = {
                 ...item,
-                quantity: quantity 
+                quantity: quantity
             }
 
-            setCart([...cart, newItem])
+            setCarrito([...carrito, newItem])
         }
     }
 
     const removeItem = (id) => {
 
-        setCart(cart.filter(prod => prod.id !== id))
+        setCarrito(carrito.filter(prod => prod.id !== id))
     }
 
     const emptyCart = () => {
-        setCart([])
+        setCarrito([])
     }
 
     const getItemQuantity = () => {
-
-        return cart.reduce((acum, prod) => acum += prod.quantity, 0)
+        return carrito.reduce((acum, prod) => acum += prod.quantity, 0)
     }
 
     const totalPrice = () => {
-        return cart.reduce((acum, prod) => acum += (prod.quantity * prod.precio), 0)
+        return carrito.reduce((acum, prod) => acum += (prod.quantity * prod.precio), 0)
     }
 
-    console.log(cart)
-
     return (
-        <CartContext.Provider value={{ cart, addItem, removeItem, emptyCart, totalPrice, getItemQuantity }}>
+        <CarritoContext.Provider value={{ carrito, addItem, removeItem, emptyCart, totalPrice, getItemQuantity }}>
             {props.children}
 
-        </CartContext.Provider>
+        </CarritoContext.Provider>
     )
 
 }
-
-export default CartProvider

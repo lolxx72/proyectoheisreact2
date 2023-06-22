@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { memo } from "react"
-const Categorias = memo(() =>{
+export const Categorias = memo(() =>{
 return(
 <div className="collapse navbar-collapse" id="navbarColor01">
   <ul className="navbar-nav me-auto">
@@ -26,5 +26,3 @@ return(
     )
 }
 )
-
-export default Categorias

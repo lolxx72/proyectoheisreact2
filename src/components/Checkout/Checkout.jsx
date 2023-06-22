@@ -1,99 +1,134 @@
-import React from 'react';
-import { useRef } from 'react';
-import { useCartContext } from '../../context/CartContext';
-import { Link} from 'react-router-dom';
-import { createOrdenCompra, getOrden, getProduct, updateProd } from '../../firebase/firebase';
-import { toast } from 'react-toastify';
+import { useRef } from "react";
+import { useCarritoContext } from "../../context/CartContext";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  createOrdenCompra,
+  getProduct,
+  updateProduct,
+} from "../../firebase/firebase";
+import { toast } from "react-toastify";
 
+export const Checkout = () => {
+  const datForm = useRef();
+  const { carrito, totalPrice, emptyCart } = useCarritoContext();
 
-const Checkout = () => {
+  let navigate = useNavigate();
+  const consultarForm = (e) => {
+    e.preventDefault();
 
-    const datForm = useRef()
-    const {Cart, totalPrice, emptyCart} = useCartContext()
+    const datosFormulario = new FormData(datForm.current);
+    const cliente = Object.fromEntries(datosFormulario);
 
-    const consultoForm = (e) => {
+    const aux = [...carrito];
 
-        e.preventDefault()
-        const datos  = new FormData(datForm.current)
-        const cliente = Object.fromEntries(datos)
+    //Recorrer mi carrito y descontar el stock
+    aux.forEach((prodCarrito) => {
+      getProduct(prodCarrito.id).then((prodBBD) => {
+        if (prodBBD.stock >= prodCarrito.quantity) {
+          prodBBD.stock -= prodCarrito.quantity;
+          updateProduct(prodBBD.id, prodBBD);
+        } else {
+          console.log(
+            "El stock no es mayor o igual a la cantidad que se quiere comprar"
+          );
+        }
+      });
+    });
+    const aux2 = aux.map((prod) => ({
+      id: prod.id,
+      quantity: prod.quantity,
+      precio: prod.precio,
+    }));
 
-        const aux = [...Cart]
-        aux.forEach(prodCart => {
-            getProduct(prodCart.id).then(prodBDD => {
-                if(prodBDD.stock >= prodCart.cant) {
-                    prodBDD.stock -= prodCart.cant
-                    updateProd(prodCart.id, prodBDD)
-                } else {
-                    console.log("El stock no es mayor o igual a la cantidad que se quiere comprar.")
-                }
-            })
-        })
-
-        createOrdenCompra(cliente, totalPrice(), aux.map(prod => ({id: prod.id, quantity: prod.quantity, precio: prod.precio})), new Date().toLocaleString('es-AR', {timeZone: Intl.DateTimeFormat().resolvedOptions()})).then(ordenCompra => {
-                toast.info('🦄 Gracias por tu compra, nos comunicaremos para seguir con ella', {
-                position: "top-center",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-                });
-            emptyCart()
-            e.target.reset()
-
-
-        })
-        .catch(error => {
-            console.error(error)
-        })
-
-
-
-    }
-    return (
+    createOrdenCompra(
+      cliente,
+      totalPrice(),
+      aux2,
+      new Date().toLocaleString("es-AR", {
+        timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+      })
+    )
+      .then((ordenCompra) => {
+        toast(
+          ` 🛒 Muchas gracias por comprar con nosotros, su ID de compra es ${
+            ordenCompra.id
+          } por un total de ${totalPrice()}, en breve nos contactaremos para el envio`,
+          {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          }
+        );
+        emptyCart();
+        e.target.reset();
+        navigate("/");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+  return (
+    <>
+      {carrito.length === 0 ? (
         <>
-        {
-            Cart.length === 0 ?
-            <>
-            <h2>Para realizar la compra debe tener al menos un producto en el carrito!</h2>
-            <Link className="nav-link" to={"/"}><button className='btn btn-primary'>Continuar comprando</button></Link>
-            </>
-            :
-        <div className='container divForm'>
-            <form onSubmit={consultoForm} ref={datForm}>
-                <div className='mb-3'>
-                    <label htmlFor="nombre" className='form-label'>Nombre y Apellido</label>
-                    <input type="text" className='form-control' name='nombre' required />
-                </div>
-                <div className='mb-3'>
-                    <label htmlFor="email" className='form-label'>Email</label>
-                    <input type="email" className='form-control' name='email' required/>
-                </div>
-                <div className='mb-3'>
-                    <label htmlFor="email" className='form-label'>Repetir email</label>
-                    <input type="email" className='form-control' name='email2' required />
-                </div>
-                <div className='mb-3'>
-                    <label htmlFor="dni" className='form-label'>DNI</label>
-                    <input type="number" className='form-control' name='dni' required/>
-                </div>
-                <div className='mb-3'>
-                    <label htmlFor="tel" className='form-label'>Numero de telefono</label>
-                    <input type="number" className='form-control' name='telefono' required/>
-                </div>
-                <div className='mb-3'>
-                    <label htmlFor="dire" className='form-label'>Direccion</label>
-                    <input type="text" className='form-control' name='direccion' required/>
-                </div>
-                <button type='submit' className='btn btn-primary'>Finalizar compra</button>
-            </form>
-            
+          <h2>Para finalizar compra debe tener productos en el carrito</h2>
+          <Link className="nav-link" to={"/"}>
+            <button className="btn btn-primary">Continuar comprando</button>
+          </Link>
+        </>
+      ) : (
+        <div className="container divForm">
+          <form onSubmit={consultarForm} ref={datForm}>
+            <div className="mb-3">
+              <label htmlFor="nombre" className="form-label">
+                Nombre y Apellido
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                name="nombre"
+                required
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="email" className="form-label">
+                Email
+              </label>
+              <input type="email" className="form-control" name="email" />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="email" className="form-label">
+                Repetir Email
+              </label>
+              <input
+                type="email"
+                className="form-control"
+                name="emailRepetido"
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="celular" className="form-label">
+                Numero telefonico
+              </label>
+              <input type="number" className="form-control" name="celular" />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="direccion" className="form-label">
+                Direccion
+              </label>
+              <input type="text" className="form-control" name="direccion" />
+            </div>
+            <button type="submit" className="btn btn-primary">
+              Finalizar Compra
+            </button>
+          </form>
         </div>
-    }
+      )}
     </>
-    );
-}
-
-export default Checkout;
+  );
+};

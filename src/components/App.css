@@ -15,8 +15,8 @@
 }
 
 .btn {
-    background: rgb(255,255,255);
-    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(253,92,29,1) 12%, rgba(252,176,69,1) 61%);
+    color: #fff;
+    border-left: 1px #fff ;
 }
 
 .carrito {
@@ -35,4 +35,13 @@
 .cartContainer {
     margin-top: 5%;
     margin-left: 15%;
+}
+
+.logo-nav {
+    max-width: 50px;
+}
+
+.prods {
+    display: flexbox;
+    box-sizing: content-box;
 }
